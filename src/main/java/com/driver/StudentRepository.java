@@ -95,18 +95,13 @@ public class StudentRepository {
     }
 
     public String deleteAllTeacher(){
-        for (String dir: pairST.keySet()) {
-            List<String> lis = pairST.get(dir);
-            for (String name: lis) {
-                if(S.containsKey(name)){
-                    S.remove(name);
-                }
+        for(List<String> student_l : pairST.values()){
+            for(String s : student_l ){
+                S.remove(s);
             }
-            T.remove(dir);
         }
-        for (String d: T.keySet()) {
-            T.remove(d);
-        }
+       T.clear();
+        pairST.clear();
 
         return "All teacher and all of their student removed successfully";
     }
